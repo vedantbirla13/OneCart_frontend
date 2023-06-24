@@ -88,7 +88,7 @@ const ProductDetailsCard = ({ setOpen, data }) => {
               <div className="w-full 800px:w-[50%]">
                 <img src={`${backend_url}${data.images && data.images[0]}`} alt="" />
                 <div className="flex">
-                  <Link to={`/shop/preview/${data.shop._id}`}> 
+                  <Link to={ ` /shop/preview/${ data.shop?.id && data.shop?._id}` }> 
                     <img
                       src={`${backend_url}${data?.shop?.avatar}`}
                       alt=""

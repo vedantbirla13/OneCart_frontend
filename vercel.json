@@ -1,0 +1,9 @@
+{
+    "version": 2,
+    "build": {
+      "env": {
+        "CI": "1",
+        "NPM_VERSION": "latest"
+      }
+    }
+  }

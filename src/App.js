@@ -45,22 +45,15 @@ import ProtectedRoute from "./ProtectedRoute";
 import SellerProtectedRoute from "./SellerProtectedRoute";
 import { getAllProducts } from "./redux/actions/product";
 import { getAllEvents } from "./redux/actions/event";
-import { server } from "./server";
-import axios from "axios";
-import { Elements } from "@stripe/react-stripe-js";
-import { loadStripe } from "@stripe/stripe-js";
+
+
 
 function App() {
   const { loading, isAuthenticated } = useSelector((state) => state.user);
   const { isLoading, isSellerAuthenticated, seller } = useSelector(
     (state) => state.seller
   );
-  const [stripeApiKey, setStripeApiKey] = useState("");
 
-  async function getStripeApiKey() {
-    const { data } = await axios.get(`${server}/payment/stripeapikey`);
-    setStripeApiKey(data.stripeApiKey);
-  }
 
   // Get the user as we login
   useEffect(() => {
@@ -68,13 +61,11 @@ function App() {
     Store.dispatch(loadSeller());
     Store.dispatch(getAllProducts());
     Store.dispatch(getAllEvents());
-    getStripeApiKey();
   }, []);
 
   return (
     <BrowserRouter>
-       {stripeApiKey && (
-        <Elements stripe={loadStripe(stripeApiKey)}>
+
           <Routes>
             <Route
               path="/payment"
@@ -85,8 +76,6 @@ function App() {
               }
             />
           </Routes>
-        </Elements>
-      )}
       <Toaster
         // gutter={36}
         toastOptions={{
@@ -113,7 +102,14 @@ function App() {
         }}
       />
       <Routes>
-        <Route path="/" element={<HomePage />} />
+      <Route
+          path="/"
+          element={
+            <ProtectedRoute isAuthenticated={isAuthenticated}>
+              <HomePage />
+            </ProtectedRoute>
+          }
+        />
         <Route path="/sign-up" element={<SignupPage />} />
         <Route
           path="/activation/:activation_token"

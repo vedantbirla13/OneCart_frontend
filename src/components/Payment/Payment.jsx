@@ -2,13 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import styles from "../../styles/styles";
 import { RxCross1 } from "react-icons/rx";
-import {
-  CardCvcElement,
-  CardExpiryElement,
-  CardNumberElement,
-  useStripe,
-  useElements,
-} from "@stripe/react-stripe-js";
 import { server } from "../../server";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js"
 import { toast } from "react-hot-toast";
@@ -19,8 +12,6 @@ const Payment = () => {
   const [orderData, setOrderData] = useState([]);
   const [open, setOpen] = useState(false);
   const { user } = useSelector((state) => state.user);
-  // const stripe = useStripe();
-  const elements = useElements();
   const navigate = useNavigate();
 
   useEffect(() => {
