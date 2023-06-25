@@ -1,3 +1,3 @@
-export const server = "http://localhost:5000/api/v1"
+export const server = "https://one-cart-frontend.vercel.app"
 
-export const backend_url = "http://localhost:5000/"
+export const backend_url = "https://onecart-backend.onrender.com"
