@@ -10,12 +10,12 @@ export const loadUser = () => async(dispatch) => {
         const { data } = await axios.get(`${server}/user/getUser`, { withCredentials: true });
         dispatch({
             type: "LoadUserSuccess",
-            payload: data.user
+            payload: data?.user
         })
     } catch (error) {
         dispatch({
             type: "LoadUserFail",
-            payload: error.response.data.message,
+            payload: error.response?.data?.message,
         })
     }
 }
@@ -29,12 +29,12 @@ export const loadSeller = () => async(dispatch) => {
         const { data } = await axios.get(`${server}/shop/getSeller`, { withCredentials: true });
         dispatch({
             type: "LoadSellerSuccess",
-            payload: data.seller
+            payload: data?.seller
         })
     } catch (error) {
         dispatch({
             type: "LoadSellerFail",
-            payload: error.response.data.message,
+            payload: error.response?.data?.message,
         })
     }
 }
@@ -58,12 +58,12 @@ export const updateUserInfo = ( name, email, password, phoneNumber ) => async(di
         });
         dispatch({
             type: "UpdateUserInfoSuccess",
-            payload: data.user
+            payload: data?.user
         })
     } catch (error) {
         dispatch({
             type: "UpdateUserInfoFail",
-            payload: error.response.data.message,
+            payload: error.response?.data?.message,
         })
     }
 }
@@ -88,14 +88,14 @@ export const updateUserAddress = ( country,city,address1,address2,addressType,zi
             type: "UpdateUserAddressSuccess",
             payload: {
                 successMessage: "Address updated successfully!!",
-                user: data.user
+                user: data?.user
             },
 
         })
     } catch (error) {
         dispatch({
             type: "UpdateUserAddressFail",
-            payload: error.response.data.message,
+            payload: error.response?.data?.message,
         })
     }
 }
@@ -113,13 +113,13 @@ export const deleteUserAddress = (id) => async(dispatch) => {
             type: "DeleteUserAddressSuccess",
             payload: {
                 successMessage: "Address deleted successfully!!",
-                user: data.user
+                user: data?.user
             }
         })
     } catch (error) {
         dispatch({
             type: "DeleteUserAddressFail",
-            payload: error.response.data.message,
+            payload: error.response?.data?.message,
         })
     }
 }
