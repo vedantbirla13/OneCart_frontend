@@ -7,9 +7,9 @@ import { MdProductionQuantityLimits } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllShopOrders } from "../../../redux/actions/order"
 import { getAllProductsShop } from "../../../redux/actions/product";
-import { Button } from "@material-ui/core";
+import { Button } from "@mui/material";
+import { DataGrid } from "@mui/x-data-grid";
 import { AiOutlineArrowRight } from "react-icons/ai";
-import { DataGrid, GridToolbar } from "@material-ui/data-grid";
 
 
 const DashboardHero = () => {
@@ -41,11 +41,7 @@ const DashboardHero = () => {
       headerName: "Status",
       minWidth: 130,
       flex: 0.7,
-      cellClassName: (params) => {
-        return params.getValue(params.id, "status") === "Delivered"
-          ? "greenColor"
-          : "redColor";
-      },
+     
     },
     {
       field: "itemsQty",

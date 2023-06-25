@@ -2,13 +2,13 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteProduct, getAllProductsShop } from "../../redux/actions/product";
 import { AiOutlineDelete, AiOutlineEye } from "react-icons/ai";
-import { Button } from "@material-ui/core";
-import { DataGrid } from "@material-ui/data-grid";
+import { Button } from "@mui/material";
+import { DataGrid } from "@mui/x-data-grid";
 import  Loader  from "../../components/Layout/Loader"
 import { Link } from "react-router-dom";
 
   
-
+ 
 const AllProducts = () => {
 
   const { isLoading, products } = useSelector((state) => state.product);
@@ -126,10 +126,6 @@ const AllProducts = () => {
                 </div>
             )            
         }
-
-
-        
-        
     </>
   );
 };
