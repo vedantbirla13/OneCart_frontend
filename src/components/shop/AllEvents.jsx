@@ -3,11 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { deleteProduct, getAllProductsShop } from "../../redux/actions/product";
 import { AiOutlineDelete, AiOutlineEye } from "react-icons/ai";
 import { Button } from "@mui/material";
-import { DataGrid } from "@mui/x-data-grid";
 import  Loader  from "../../components/Layout/Loader"
 import { Link } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import { deleteEvent, getAllEventsShop } from "../../redux/actions/event";
+import Table from "../Table/Table";
 
 
 const AllEvents = () => {
@@ -28,43 +28,33 @@ const AllEvents = () => {
   }
 
   const columns = [
-    { field: "id", headerName: "Product Id", minWidth: 150, flex: 0.7 },
+    { field: "id", headerName: "Product Id"},
     {
       field: "name",
       headerName: "Name",
-      minWidth: 180,
-      flex: 1.4,
+
     },
     {
       field: "price",
       headerName: "Price",
-      minWidth: 100,
-      flex: 0.6,
+
     },
     {
       field: "Stock",
       headerName: "Stock",
-      type: "number",
-      minWidth: 80,
-      flex: 0.5,
+
     },
 
     {
       field: "sold",
       headerName: "Sold out",
-      type: "number",
-      minWidth: 130,
-      flex: 0.6,
+
     },
     {
       field: "Preview",
-      flex: 0.8,
-      minWidth: 100,
       headerName: "",
-      type: "number",
-      sortable: false,
       renderCell: (params) => {
-        const d = params.row.name;
+        // const d = params.data.name;
         // const product_name = d.replace(/\s+/g, "-");
         return (
           <>
@@ -79,11 +69,7 @@ const AllEvents = () => {
     },
     {
       field: "Delete",
-      flex: 0.8,
-      minWidth: 120,
       headerName: "",
-      type: "number",
-      sortable: false,
       renderCell: (params) => {
         return (
           <>
@@ -96,17 +82,18 @@ const AllEvents = () => {
     },
   ];
 
-  const row = [];
+  const data = [];
 
   events && events.forEach((item) => {
-    row.push({
+    data.push({
         id: item._id,
-        name: item.name,
+        name: item.name.slice(0,50) + "...",
         price: "INR₹ " + item.discountPrice,
         Stock: item.stock,
         sold: 10,
     });
   });
+
 
   return (
     <>
@@ -115,12 +102,9 @@ const AllEvents = () => {
                 <Loader />
             ) : (
                 <div className="w-full mx-8 pt-1 mt-10 bg-white">
-                    <DataGrid 
-                        rows={row}
+                    <Table 
+                        data={data}
                         columns={columns}
-                        pageSize={10}
-                        disableSelectionOnClick
-                        autoHeight
                     />
                 </div>
             )

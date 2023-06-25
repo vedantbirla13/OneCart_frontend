@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { deleteProduct, getAllProductsShop } from "../../redux/actions/product";
 import { AiOutlineDelete, AiOutlineEye } from "react-icons/ai";
 import { Button } from "@mui/material";
-import { DataGrid } from "@mui/x-data-grid";
 import Loader from "../../components/Layout/Loader";
 import { Link } from "react-router-dom";
 import { toast } from "react-hot-toast";
@@ -11,6 +10,7 @@ import styles from "../../styles/styles";
 import { RxCross1 } from "react-icons/rx";
 import { categoriesData } from "../../static/data";
 import { server } from "../../server";
+import Table from "../Table/Table";
 import axios from "axios";
 
 const AllCoupons = () => {
@@ -81,27 +81,19 @@ const AllCoupons = () => {
   };
 
   const columns = [
-    { field: "id", headerName: "Coupon Id", minWidth: 150, flex: 0.7 },
+    { field: "id", headerName: "Coupon Id" },
     {
       field: "name",
       headerName: "Name",
-      minWidth: 180,
-      flex: 1.4,
     },
     {
       field: "price",
       headerName: "Price",
-      minWidth: 100,
-      flex: 0.6,
     },
 
     {
       field: "Delete",
-      flex: 0.8,
-      minWidth: 120,
       headerName: "",
-      type: "number",
-      sortable: false,
       renderCell: (params) => {
         return (
           <>
@@ -114,11 +106,11 @@ const AllCoupons = () => {
     },
   ];
 
-  const row = [];
+  const data = [];
 
   coupons &&
     coupons.forEach((item) => {
-      row.push({
+      data.push({
         id: item._id,
         name: item.name,
         price: item.value + "%",
@@ -139,12 +131,9 @@ const AllCoupons = () => {
               <span className="text-white ">Create coupon code</span>
             </div>
           </div>
-          <DataGrid
-            rows={row}
+          <Table
+            data={data}
             columns={columns}
-            pageSize={10}
-            disableSelectionOnClick
-            autoHeight
           />
 
           {open && (

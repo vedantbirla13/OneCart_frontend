@@ -7,7 +7,7 @@ import {
   AiOutlineDelete,
 } from "react-icons/ai";
 import { Button } from "@mui/material";
-import { DataGrid } from "@mui/x-data-grid";
+import Table from "../Table/Table"
 import styles from "../../styles/styles";
 import { Link } from "react-router-dom";
 import { MdOutlineTrackChanges } from "react-icons/md";
@@ -215,42 +215,28 @@ const AllOrders = () => {
   
 
   const columns = [
-    { field: "id", headerName: "Order ID", minWidth: 150, flex: 0.7 },
+    { field: "id", headerName: "Order ID"},
 
     {
       field: "status",
       headerName: "Status",
-      minWidth: 130,
-      flex: 0.7,
-      cellClassName: (params) => {
-        return params.getValue(params.id, "status") === "Delivered"
-          ? "greenColor"
-          : "redColor";
-      },
+      
     },
     {
       field: "itemsQty",
       headerName: "Items Qty",
-      type: "number",
-      minWidth: 130,
-      flex: 0.7,
+
     },
 
     {
       field: "total",
       headerName: "Total",
-      type: "number",
-      minWidth: 130,
-      flex: 0.8,
+
     },
 
     {
       field: " ",
-      flex: 1,
-      minWidth: 150,
       headerName: "",
-      type: "number",
-      sortable: false,
       renderCell: (params) => {
         return (
           <>
@@ -265,11 +251,11 @@ const AllOrders = () => {
     },
   ];
 
-  const row = [];
+  const data = [];
 
   orders &&
     orders.forEach((item) => {
-      row.push({
+      data.push({
         id: item._id,
         itemsQty: item.cart.length,
         total: "INR₹ " + item.totalPrice,
@@ -279,12 +265,9 @@ const AllOrders = () => {
 
   return (
     <div className="pl-8 pt-1">
-      <DataGrid
-        rows={row}
+      <Table
+        data={data}
         columns={columns}
-        pageSize={10}
-        disableSelectionOnClick 
-        autoHeight
       />
     </div>
   );
@@ -303,42 +286,25 @@ const AllRefundOrders = () => {
   const eligibleOrders = orders && orders.filter((item) => item.status === "Processing refund");
 
   const columns = [
-    { field: "id", headerName: "Order ID", minWidth: 150, flex: 0.7 },
+    { field: "id", headerName: "Order ID" },
 
     {
       field: "status",
       headerName: "Status",
-      minWidth: 130,
-      flex: 0.7,
-      cellClassName: (params) => {
-        return params.getValue(params.id, "status") === "Delivered"
-          ? "greenColor"
-          : "redColor";
-      },
     },
     {
       field: "itemsQty",
       headerName: "Items Qty",
-      type: "number",
-      minWidth: 130,
-      flex: 0.7,
     },
 
     {
       field: "total",
       headerName: "Total",
-      type: "number",
-      minWidth: 130,
-      flex: 0.8,
     },
 
     {
       field: " ",
-      flex: 1,
-      minWidth: 150,
       headerName: "",
-      type: "number",
-      sortable: false,
       renderCell: (params) => {
         return (
           <>
@@ -353,11 +319,11 @@ const AllRefundOrders = () => {
     },
   ];
 
-  const row = [];
+  const data = [];
 
   eligibleOrders &&
    eligibleOrders.forEach((item) => {
-      row.push({
+      data.push({
         id: item._id,
         itemsQty: item.cart.length,
         total: "INR" + item.totalPrice,
@@ -367,12 +333,9 @@ const AllRefundOrders = () => {
 
   return (
     <div className="pl-8 pt-1">
-      <DataGrid
-        rows={row}
+      <Table
+        data={data}
         columns={columns}
-        pageSize={10}
-        autoHeight
-        disableSelectionOnClick
       />
     </div>
   );
@@ -388,42 +351,26 @@ const TrackOrder = () => {
   
 
   const columns = [
-    { field: "id", headerName: "Order ID", minWidth: 150, flex: 0.7 },
+    { field: "id", headerName: "Order ID" },
 
     {
       field: "status",
       headerName: "Status",
-      minWidth: 130,
-      flex: 0.7,
-      cellClassName: (params) => {
-        return params.getValue(params.id, "status") === "Delivered"
-          ? "greenColor"
-          : "redColor";
-      },
     },
     {
       field: "itemsQty",
       headerName: "Items Qty",
-      type: "number",
-      minWidth: 130,
-      flex: 0.7,
     },
 
     {
       field: "total",
       headerName: "Total",
-      type: "number",
-      minWidth: 130,
-      flex: 0.8,
     },
 
     {
       field: " ",
-      flex: 1,
-      minWidth: 150,
       headerName: "",
-      type: "number",
-      sortable: false,
+
       renderCell: (params) => {
         return (
           <>
@@ -438,11 +385,11 @@ const TrackOrder = () => {
     },
   ];
 
-  const row = [];
+  const data = [];
 
   orders &&
     orders.forEach((item) => {
-      row.push({
+      data.push({
         id: item._id,
         itemsQty: item.cart.length,
         total: "INR₹ " + item.totalPrice,
@@ -452,12 +399,9 @@ const TrackOrder = () => {
 
   return (
     <div className="pl-8 pt-1">
-      <DataGrid
-        rows={row}
+      <Table
+        data={data}
         columns={columns}
-        pageSize={10}
-        disableSelectionOnClick
-        autoHeight
       />
     </div>
   );

@@ -8,8 +8,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllShopOrders } from "../../../redux/actions/order"
 import { getAllProductsShop } from "../../../redux/actions/product";
 import { Button } from "@mui/material";
-import { DataGrid } from "@mui/x-data-grid";
 import { AiOutlineArrowRight } from "react-icons/ai";
+import Table from "../../Table/Table";
 
 
 const DashboardHero = () => {
@@ -34,38 +34,29 @@ const DashboardHero = () => {
   const availableBalance = totalEarningWithoutTax - serviceCharge || 0
 
   const columns = [
-    { field: "id", headerName: "Order ID", minWidth: 150, flex: 0.7 },
+    { field: "id", headerName: "Order ID" },
 
     {
       field: "status",
       headerName: "Status",
-      minWidth: 130,
-      flex: 0.7,
+
      
     },
     {
       field: "itemsQty",
       headerName: "Items Qty",
-      type: "number",
-      minWidth: 130,
-      flex: 0.7,
+
     },
 
     {
       field: "total",
       headerName: "Total",
-      type: "number",
-      minWidth: 130,
-      flex: 0.8,
+
     },
 
     {
       field: " ",
-      flex: 1,
-      minWidth: 150,
       headerName: "",
-      type: "number",
-      sortable: false,
       renderCell: (params) => {
         return (
           <>
@@ -80,11 +71,11 @@ const DashboardHero = () => {
     },
   ];
 
-  const row = [];
+  const data = [];
 
   orders &&
     orders.forEach((item) => {
-      row.push({
+      data.push({
         id: item._id,
         itemsQty: item.cart.length,
         total: "INR₹ " + item.totalPrice,
@@ -157,13 +148,10 @@ const DashboardHero = () => {
       <br />
       <h3 className="font-Poppins tracking-wider pb-2 text-[22px]">Latest Orders</h3>
       <div className="w-full min-h-[45vh] bg-white rounded shadow">
-      <DataGrid
-        rows={row}
+      <Table
+        data={data}
         columns={columns}
-        pageSize={10}
-        disableSelectionOnClick 
-        autoHeight
-        pagination
+
       />
       </div>
     </div>

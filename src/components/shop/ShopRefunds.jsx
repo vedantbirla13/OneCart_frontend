@@ -1,6 +1,6 @@
-import { Button } from "@mui/material";
-import { DataGrid } from "@mui/x-data-grid";
 import React, { useEffect } from "react";
+import { Button } from "@mui/material";
+import Table from "../Table/Table"
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Loader from "../Layout/Loader";
@@ -20,38 +20,26 @@ const ShopRefunds = () => {
   const refundOrders = orders && orders.filter((item) => item.status === "Processing refund" || item.status === "Refund Success" )
 
   const columns = [
-    { field: "id", headerName: "Order ID", minWidth: 150, flex: 0.7 },
+    { field: "id", headerName: "Order ID"},
 
     {
       field: "status",
       headerName: "Status",
-      minWidth: 130,
-      flex: 0.7,
       
     },
     {
       field: "itemsQty",
       headerName: "Items Qty",
-      type: "number",
-      minWidth: 130,
-      flex: 0.7,
     },
 
     {
       field: "total",
       headerName: "Total",
-      type: "number",
-      minWidth: 130,
-      flex: 0.8,
     },
 
     {
       field: " ",
-      flex: 1,
-      minWidth: 150,
       headerName: "",
-      type: "number",
-      sortable: false,
       renderCell: (params) => {
         return (
           <>
@@ -66,11 +54,11 @@ const ShopRefunds = () => {
     },
   ];
 
-  const row = [];
+  const data = [];
 
   refundOrders &&
   refundOrders.forEach((item) => {
-      row.push({
+      data.push({
         id: item._id,
         itemsQty: item.cart.length,
         total: "INR " + item.totalPrice,
@@ -84,12 +72,10 @@ const ShopRefunds = () => {
         <Loader />
       ) : (
         <div className="w-full mx-8 pt-1 mt-10 bg-white">
-          <DataGrid
-            rows={row}
+          <Table
+            data={data}
             columns={columns}
-            pageSize={10}
-            disableSelectionOnClick
-            autoHeight
+
           />
         </div>
       )}
