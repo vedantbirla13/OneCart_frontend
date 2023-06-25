@@ -27,7 +27,7 @@ const Events = () => {
               }
 
               {
-                allEvents.length === 0 && (
+                allEvents?.length === 0 && (
                   <h4 className='text-2xl font-Poppins tracking-wider'>No Events yet!!</h4>
                 )
               }

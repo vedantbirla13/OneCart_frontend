@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { categoriesData } from "../../static/data";
 import { AiOutlinePlusCircle } from "react-icons/ai";
-import styles from "../../styles/styles";
 import { createProduct } from "../../redux/actions/product";
 import { toast } from "react-hot-toast";
 

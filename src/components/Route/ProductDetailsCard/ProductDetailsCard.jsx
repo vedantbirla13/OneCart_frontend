@@ -5,7 +5,6 @@ import {
   AiFillHeart,
   AiFillStar,
   AiOutlineHeart,
-  AiOutlineMessage,
   AiOutlineShopping,
 } from "react-icons/ai";
 import { backend_url } from "../../../server";

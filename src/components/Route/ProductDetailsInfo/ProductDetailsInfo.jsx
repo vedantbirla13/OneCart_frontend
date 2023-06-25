@@ -13,7 +13,6 @@ const ProductDetailsInfo = ({ data, products, totalReviewsLength, averageRating 
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getAllProductsShop(data && data.shop._id));
-    // dispatch(getAllEventsShop(seller._id));
   }, [dispatch]);
   
 

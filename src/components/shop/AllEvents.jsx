@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteProduct, getAllProductsShop } from "../../redux/actions/product";
 import { AiOutlineDelete, AiOutlineEye } from "react-icons/ai";
 import { Button } from "@mui/material";
 import  Loader  from "../../components/Layout/Loader"
 import { Link } from "react-router-dom";
-import { toast } from "react-hot-toast";
 import { deleteEvent, getAllEventsShop } from "../../redux/actions/event";
 import Table from "../Table/Table";
 

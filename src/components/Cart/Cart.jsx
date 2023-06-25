@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { RxCross1 } from "react-icons/rx";
 import { IoBagHandleOutline } from "react-icons/io5";
 import { HiOutlineMinus, HiPlus } from "react-icons/hi";
-import headphones from "../../assets/headphones_a_1.webp";
 import styles from "../../styles/styles";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
