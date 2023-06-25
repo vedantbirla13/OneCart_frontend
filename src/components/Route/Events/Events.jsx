@@ -21,7 +21,7 @@ const Events = () => {
 
             <div className='w-full grid'>
               {
-                allEvents.length !== 0 && (
+                allEvents?.length !== 0 && (
                   <EventCard data={allEvents && allEvents[0]} />
                 )
               }

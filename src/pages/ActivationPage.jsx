@@ -9,7 +9,6 @@ const ActivationPage = () => {
 
   useEffect(() => {
     if (activation_token) {
-      // console.log(activation_token);
       const activationEmail = async () => {
           await axios
             .post(`${server}/user/activation`, {
