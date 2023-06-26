@@ -19,7 +19,7 @@ export const createEvent = (newForm) => async(dispatch) => {
     } catch (error) {
         dispatch({
             type: "eventCreateFail",
-            payload: error.response.data.message
+            payload: error.response.data?.message
         });        
     }
 }
@@ -40,7 +40,7 @@ export const getAllEventsShop = (id) => async(dispatch) => {
     } catch (error) {
         dispatch({
             type: "getAllEventsShopFail",
-            payload: error.response.data.message
+            payload: error.response.data?.message
         })
     }
 }
@@ -63,7 +63,7 @@ export const deleteEvent = (id) => async(dispatch) => {
     } catch (error) {
         dispatch({
             type: "deleteEventFail",
-            payload: error.response.data.message
+            payload: error.response.data?.message
         })
     }
 }
@@ -83,7 +83,7 @@ export const getAllEvents = () => async(dispatch) => {
     } catch (error) {
         dispatch({
             type: "getAllEventsFail",
-            payload: error.response.data.message
+            payload: error.response.data?.message
         })
     }
 }
