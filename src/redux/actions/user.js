@@ -7,15 +7,10 @@ export const loadUser = () => async (dispatch) => {
     dispatch({
       type: "LoadUserRequest",
     });
-    const { data } = await axios.get(`${server}/user/getUser`, {
-      withCredentials: true,
-      headers: {
-        "Access-Control-Allow-Credentials": true,
-      },
-    });
+    const { data } = await axios.get(`${server}/user/getUser`,{ withCredentials: true });
     dispatch({
       type: "LoadUserSuccess",
-      payload: data?.user,
+      payload: data.user,
     });
   } catch (error) {
     dispatch({
@@ -36,7 +31,7 @@ export const loadSeller = () => async (dispatch) => {
     });
     dispatch({
       type: "LoadSellerSuccess",
-      payload: data?.seller,
+      payload: data.seller,
     });
   } catch (error) {
     dispatch({
