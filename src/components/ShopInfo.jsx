@@ -30,11 +30,11 @@ const ShopInfo = ({ isOwner }) => {
   }, []);
 
 
-  const logoutHandler = async() => {
-    await axios.get(`${server}/shop/logoutSeller`, {
+  const logoutHandler = () => {
+     axios.get(`${server}/shop/logoutSeller`, {
       withCredentials: true
     }).then((res) => {
-      toast.success("Logout successful")
+      toast.success(res.data.message)
       navigate("/shop-login")
       window.location.reload(true)
     }).catch((error) => {
@@ -107,7 +107,7 @@ const averageRating = avg.toFixed(2);
                 <Link to="/settings" className={`${styles.hero_button} !w-full !h-[42px] !rounded-[5px]`}>
                     <span className="text-white font-Poppins">Edit shop</span>
                 </Link>
-                <div className={`${styles.hero_button} !w-full !h-[42px] !rounded-[5px]`} onClick={logoutHandler}>
+                <div className={`${styles.hero_button} !w-full !h-[42px] !rounded-[5px]`} onClick={() => logoutHandler()}>
                     <span className="text-white font-Poppins">Log out</span>
                 </div>
             </div>

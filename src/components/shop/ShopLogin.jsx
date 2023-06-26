@@ -14,6 +14,7 @@ const ShopLogin = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const config = { headers: { "Content-Type": "application/json" } };
     await axios
       .post(
         `${server}/shop/login-shop`,
@@ -21,16 +22,21 @@ const ShopLogin = () => {
           email,
           password,
         },
-        // config,
-        { withCredentials: true }
+        config,
+        {
+          withCredentials: true,
+          headers: {
+            "Access-Control-Allow-Credentials": true,
+          },
+        }
       )
       .then((res) => {
-        toast.success("Login Success")
+        toast.success("Login Success");
         navigate("/dashboard");
         window.location.reload(true);
       })
       .catch((err) => {
-        toast.error(err.response.data.message)
+        toast.error(err.response.data.message);
       });
   };
 
