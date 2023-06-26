@@ -33,10 +33,13 @@ const ShopInfo = ({ isOwner }) => {
   const logoutHandler = async() => {
     await axios.get(`${server}/shop/logoutSeller`, {
       withCredentials: true
+    }).then((res) => {
+      toast.success("Logout successful")
+      navigate("/shop-login")
+      window.location.reload(true)
+    }).catch((error) => {
+      console.log(error.response.data.message);
     });
-    toast.success("Logout successful")
-    navigate("/shop-login")
-    window.location.reload(true)
   }
 
   const totalReviewsLength =
