@@ -105,7 +105,7 @@ function App() {
       <Route
           path="/"
           element={
-            <ProtectedRoute isAuthenticated={isAuthenticated}>
+            <ProtectedRoute >
               <HomePage />
             </ProtectedRoute>
           }
