@@ -4,7 +4,7 @@ import { backend_url, server } from "../server";
 import styles from "../styles/styles";
 import axios from "axios";
 import { toast } from "react-hot-toast";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { getAllProductsShop } from "../redux/actions/product";
 import { getAllEventsShop } from "../redux/actions/event";
 
@@ -14,6 +14,7 @@ const ShopInfo = ({ isOwner }) => {
   const [data, setData] = useState({})
   const [isLoading, setIsLoading] = useState(false)
   const dispatch = useDispatch()
+  const navigate = useNavigate();
 
   const { id } = useParams();
   useEffect(() => {
@@ -34,6 +35,7 @@ const ShopInfo = ({ isOwner }) => {
       withCredentials: true
     });
     toast.success("Logout successful")
+    navigate("/shop-login")
     window.location.reload(true)
   }
 
