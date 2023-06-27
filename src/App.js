@@ -104,7 +104,9 @@ function App() {
       <Route
           path="/"
           element={
+            <ProtectedRoute>
               <HomePage />
+            </ProtectedRoute>
           }
         />
         <Route path="/sign-up" element={<SignupPage />} />
