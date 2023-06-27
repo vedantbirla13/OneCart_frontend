@@ -22,7 +22,6 @@ const AllProducts = () => {
 
   const handleDelete = (id) => {
     dispatch(deleteProduct(id))
-    // toast.success("product deleted succesfully")
     window.location.reload(true)
   }
 
