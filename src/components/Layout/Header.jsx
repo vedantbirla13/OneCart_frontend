@@ -105,7 +105,7 @@ const Header = ({ activeHeading }) => {
           >
             <Link to="/shop-create">
               <h1 className="text-[#fff] flex items-center">
-                {isSellerAuthenticated ? "Dashboard" : "Become Seller"}{" "}
+                {"Become Seller"}{" "}
                 <IoIosArrowForward size={18} className="ml-1" />
               </h1>
             </Link>

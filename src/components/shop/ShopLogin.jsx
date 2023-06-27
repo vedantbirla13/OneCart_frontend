@@ -14,7 +14,6 @@ const ShopLogin = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const config = { headers: { "Content-Type": "application/json" } };
     await axios
       .post(
         `${server}/shop/login-shop`,
@@ -22,12 +21,8 @@ const ShopLogin = () => {
           email,
           password,
         },
-        config,
         {
           withCredentials: true,
-          headers: {
-            "Access-Control-Allow-Credentials": true,
-          },
         }
       )
       .then((res) => {
