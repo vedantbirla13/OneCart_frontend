@@ -1,5 +1,5 @@
 
-Deployed site: one-cart-frontend.vercel.app
+Deployed site: [one-cart-frontend.vercel.app](https://one-cart-frontend.vercel.app/)
 
 # Getting Started with Create React App
 
