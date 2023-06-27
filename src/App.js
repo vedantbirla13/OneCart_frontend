@@ -35,12 +35,11 @@ import {
   ShopWithdrawMoney,
 } from "./components/Route/ShopRoute";
 import { ShopHomePage } from "./ShopRoutes.js";
-import toast, { Toaster } from "react-hot-toast";
-import { useEffect, useState } from "react";
+import  { Toaster } from "react-hot-toast";
+import { useEffect } from "react";
 import Store from "./redux/store";
 import { loadSeller, loadUser } from "./redux/actions/user";
 import { useSelector } from "react-redux";
-import Loader from "./components/Layout/Loader";
 import ProtectedRoute from "./ProtectedRoute";
 import SellerProtectedRoute from "./SellerProtectedRoute";
 import { getAllProducts } from "./redux/actions/product";

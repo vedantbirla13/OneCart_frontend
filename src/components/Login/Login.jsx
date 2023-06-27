@@ -14,7 +14,7 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const config = { headers: { "Content-Type": "application/json" } };
+    // const config = { headers: { "Content-Type": "application/json" } };
     await axios
       .post(
         `${server}/user/login-user`,
@@ -22,12 +22,9 @@ const Login = () => {
           email,
           password,
         },
-        config,
+        // config,
         {
-          withCredentials: true,
-          headers: {
-            "Access-Control-Allow-Credentials": true,
-          },
+          withCredentials: true
         }
       )
       .then((res) => {
