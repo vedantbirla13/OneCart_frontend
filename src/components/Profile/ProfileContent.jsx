@@ -19,9 +19,10 @@ import {
   updateUserInfo,
 } from "../../redux/actions/user";
 import { toast } from "react-hot-toast";
+import Loader from "../Layout/Loader"
 import { Country, State } from "country-state-city";
-import axios from "axios";
 import { getAllUserOrders } from "../../redux/actions/order";
+import axios from "axios";
 
 const ProfileContent = ({ active }) => {
   const { user, error, successMessage } = useSelector((state) => state.user);
@@ -207,7 +208,7 @@ const ProfileContent = ({ active }) => {
 // ALL orders
 const AllOrders = () => {
   const { user } = useSelector((state) => state.user)
-  const { orders } = useSelector((state) => state.order)
+  const { orders, isLoading } = useSelector((state) => state.order)
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(getAllUserOrders(user._id))
@@ -265,10 +266,19 @@ const AllOrders = () => {
 
   return (
     <div className="pl-8 pt-1">
-      <Table
-        data={data}
-        columns={columns}
-      />
+      {
+        isLoading ? (
+          <>
+            <Loader />
+          </>
+        ) : (
+
+          <Table
+            data={data}
+            columns={columns}
+          />
+        )
+      }
     </div>
   );
 };
@@ -276,7 +286,7 @@ const AllOrders = () => {
 //   All refund orders
 const AllRefundOrders = () => {
   const { user } = useSelector((state) => state.user);
-  const { orders } = useSelector((state) => state.order);
+  const { orders,isLoading } = useSelector((state) => state.order);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -333,17 +343,26 @@ const AllRefundOrders = () => {
 
   return (
     <div className="pl-8 pt-1">
-      <Table
-        data={data}
-        columns={columns}
-      />
+       {
+        isLoading ? (
+          <>
+            <Loader />
+          </>
+        ) : (
+
+          <Table
+            data={data}
+            columns={columns}
+          />
+        )
+      }
     </div>
   );
 };
 
 const TrackOrder = () => {
   const { user } = useSelector((state) => state.user)
-  const { orders } = useSelector((state) => state.order)
+  const { orders,isLoading } = useSelector((state) => state.order)
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(getAllUserOrders(user._id))
@@ -399,10 +418,19 @@ const TrackOrder = () => {
 
   return (
     <div className="pl-8 pt-1">
-      <Table
-        data={data}
-        columns={columns}
-      />
+       {
+        isLoading ? (
+          <>
+            <Loader />
+          </>
+        ) : (
+
+          <Table
+            data={data}
+            columns={columns}
+          />
+        )
+      }
     </div>
   );
 };
