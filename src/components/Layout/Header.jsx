@@ -103,7 +103,7 @@ const Header = ({ activeHeading }) => {
           <div
             className={`${styles.header_button} hover:bg-[#201668] transition-all duration-300`}
           >
-            <Link to={`${isSellerAuthenticated ? "/dashboard" : "/shop-create"}`}>
+            <Link to="/shop-create">
               <h1 className="text-[#fff] flex items-center">
                 {isSellerAuthenticated ? "Dashboard" : "Become Seller"}{" "}
                 <IoIosArrowForward size={18} className="ml-1" />
