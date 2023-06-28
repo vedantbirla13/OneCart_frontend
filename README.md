@@ -1,3 +1,6 @@
+
+Deployed site: [one-cart-frontend.vercel.app](https://one-cart-frontend.vercel.app/)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
